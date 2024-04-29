@@ -1,22 +1,30 @@
 export const PROJECT_STATUS_CLASS_MAP = {
+  new: "bg-sky-400",
   pending: "bg-amber-500",
-  in_progress: "bg-blue-500 ",
-  completed: "bg-green-500",
+  in_progress: "bg-violet-500",
+  completed: "bg-emerald-500",
+  canceled: "bg-rose-500",
 };
 export const PROJECT_STATUS_TEXT_MAP = {
-  pending: "Pending",
-  in_progress: "In Progress",
-  completed: "Completed",
+  new: "новый",
+  pending: "отложен",
+  in_progress: "в процессе",
+  completed: "завершен",
+  canceled: "отменен",
 };
 export const TASK_STATUS_CLASS_MAP = {
+  new: "bg-sky-400",
   pending: "bg-amber-500",
-  in_progress: "bg-blue-500",
-  completed: "bg-green-500",
+  in_progress: "bg-violet-500",
+  completed: "bg-emerald-500",
+  canceled: "bg-rose-500",
 };
 export const TASK_STATUS_TEXT_MAP = {
-  pending: "Pending",
-  in_progress: "In Progress",
-  completed: "Completed",
+  new: "новая",
+  pending: "отложена",
+  in_progress: "в процессе",
+  completed: "завершена",
+  canceled: "отменена",
 };
 export const TASK_PRIORITY_CLASS_MAP = {
   low: "bg-gray-600",
