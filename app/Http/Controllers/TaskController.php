@@ -25,10 +25,13 @@ class TaskController extends Controller
         if (request("status")) {
             $query->where("status", request("status"));
         }
+        if (request("priority")) {
+            $query->where("priority", request("priority"));
+        }
 
         $tasks = $query
             ->orderBy($sortField, $sortDirection)
-            ->paginate(15)
+            ->paginate(10)
             ->onEachSide(1);
 
         return inertia("Task/Index", [

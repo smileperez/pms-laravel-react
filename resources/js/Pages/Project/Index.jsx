@@ -63,7 +63,7 @@ export default function index({ auth, projects, queryParams = null }) {
                       >
                         ID
                       </TableHeading>
-                      <th className="px-3 py-2">Avatar</th>
+                      <th className="px-3 py-2">Аватар</th>
                       <TableHeading
                         name={"name"}
                         sort_field={queryParams.sort_field}
@@ -143,7 +143,9 @@ export default function index({ auth, projects, queryParams = null }) {
                         <td className="px-3 py-2">
                           <img src={project.image_path} style={{ width: 60 }} alt="" />
                         </td>
-                        <td className="px-3 py-3">{project.name}</td>
+                        <td className="px-3 py-3 hover:text-white">
+                          <Link href={route("project.show", project.id)}>{project.name}</Link>
+                        </td>
                         <td className="px-3 py-3">
                           <span className={"px-2 py-1 rounded text-white " + PROJECT_STATUS_CLASS_MAP[project.status]}>
                             {PROJECT_STATUS_TEXT_MAP[project.status]}

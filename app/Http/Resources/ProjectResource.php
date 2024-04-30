@@ -8,6 +8,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProjectResource extends JsonResource
 {
+    // Отключение обёртки (wrap) данных ("data"), чтобы отправить в frontend чистые данные
+    public static $wrap = false;
     /**
      * Transform the resource into an array.
      *
