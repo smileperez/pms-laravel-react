@@ -28,7 +28,7 @@ class ProjectController extends Controller
 
         $projects = $query
             ->orderBy($sortField, $sortDirection)
-            ->paginate(10)
+            ->paginate(12)
             ->onEachSide(1);
 
         return inertia("Project/Index", [
