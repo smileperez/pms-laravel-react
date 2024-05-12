@@ -4,7 +4,7 @@ import SelectInput from "@/Components/SelectInput";
 import TextAreaInput from "@/Components/TextAreaInput";
 import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, useForm } from "@inertiajs/react";
+import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Create({ auth }) {
   const { data, setData, post, errors, reset } = useForm({
@@ -18,7 +18,7 @@ export default function Create({ auth }) {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    post(route('project.create'));
+    post(route('project.store'));
   };
 
   return (
@@ -57,9 +57,8 @@ export default function Create({ auth }) {
                 id="project_image_path"
                 type="file"
                 name="image"
-                value={data.image}
                 className="mt-1 block w-full"
-                onChange={(e) => setData('image', e.target.value)} />
+                onChange={(e) => setData('image', e.target.files[0])} />
               <InputError message={errors.image} className="mt-2" />
             </div>
             <div className="mt-4">
@@ -81,11 +80,11 @@ export default function Create({ auth }) {
               <TextInput
                 id="project_due_date"
                 type="date"
-                name="date"
-                value={data.date}
+                name="due_date"
+                value={data.due_date}
                 className="mt-1 block w-full"
-                onChange={(e) => setData('date', e.target.value)} />
-              <InputError message={errors.date} className="mt-2" />
+                onChange={(e) => setData('due_date', e.target.value)} />
+              <InputError message={errors.due_date} className="mt-2" />
             </div>
             <div className="mt-4">
               <InputLabel
@@ -94,17 +93,30 @@ export default function Create({ auth }) {
               <SelectInput
                 id="project_status"
                 name="status"
-                value={data.date}
+                value={data.status}
                 className="mt-1 block w-full"
                 onChange={(e) => setData('status', e.target.value)}>
                 <option value="">Выбрать</option>
-                <option value="new">новый</option>
-                <option value="pending">отложен</option>
-                <option value="in_progress">в процессе</option>
-                <option value="completed">завершен</option>
-                <option value="canceled">отменен</option>
+                <option value="new">Новый</option>
+                <option value="pending">Отложен</option>
+                <option value="in_progress">А процессе</option>
+                <option value="completed">Завершен</option>
+                <option value="canceled">Отменен</option>
               </SelectInput>
               <InputError message={errors.status} className="mt-2" />
+            </div>
+            <div className="mt-4 flex justify-end items-center">
+              <Link
+                href={route('project.index')}
+                className="block bg-gray-100 py-1 px-3 text-gray-800 rounded shadow transition-all hover:bg-gray-200 mr-2 text-sm h-7"
+              >
+                Отменить
+              </Link>
+              <button
+                className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600 text-sm"
+              >
+                Создать
+              </button>
             </div>
           </form>
         </div>

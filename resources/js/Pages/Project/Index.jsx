@@ -6,7 +6,7 @@ import { PROJECT_STATUS_CLASS_MAP, PROJECT_STATUS_TEXT_MAP } from "@/constants.j
 import { Head, Link, router } from "@inertiajs/react";
 import TableHeading from "@/Components/TableHeading";
 
-export default function index({ auth, projects, queryParams = null }) {
+export default function index({ auth, projects, queryParams = null, success }) {
 
   queryParams = queryParams || {};
 
@@ -58,8 +58,17 @@ export default function index({ auth, projects, queryParams = null }) {
     >
       <Head title="Проекты" />
 
+
+
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+          {success && (
+            <div className="bg-emerald-500 py-2 px-4 text-white rounded mb-4">
+              {success}
+            </div>
+          )}
+
           <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 text-gray-900 dark:text-gray-100">
               <div className="overflow-auto">
@@ -120,23 +129,23 @@ export default function index({ auth, projects, queryParams = null }) {
                         <TextInput
                           className="w-full text-xs"
                           defaultValue={queryParams.name}
-                          placeholder="...проект"
+                          placeholder="...Проект"
                           onBlur={e => searchFieldChanged('name', e.target.value)}
                           onKeyPress={e => onKeyPress('name', e)}
                         />
                       </th>
                       <th className="px-3 py-2">
                         <SelectInput
-                          className="w-full"
+                          className="w-full text-xs min-w-24"
                           defaultValue={queryParams.status}
                           onChange={e => searchFieldChanged('status', e.target.value)}
                         >
-                          <option value="">Выбрать</option>
-                          <option value="new">новый</option>
-                          <option value="pending">отложен</option>
-                          <option value="in_progress">в процессе</option>
-                          <option value="completed">завершен</option>
-                          <option value="canceled">отменен</option>
+                          <option className="text-gray-300" value="">Выбрать</option>
+                          <option value="new">Новый</option>
+                          <option value="pending">Отложен</option>
+                          <option value="in_progress">В процессе</option>
+                          <option value="completed">Завершен</option>
+                          <option value="canceled">Отменен</option>
                         </SelectInput>
                       </th>
                       <th className="px-3 py-2"></th>

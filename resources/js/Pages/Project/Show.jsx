@@ -56,7 +56,7 @@ export default function Show({ auth, project, tasks, queryParams }) {
                   </div>
                   <div className="mt-4">
                     <label className="font-bold text-lg">Дата создания проекта</label>
-                    <p className="mt-1">{project.due_date}</p>
+                    <p className="mt-1">{project.created_at}</p>
                   </div>
                   <div className="mt-4">
                     <label className="font-bold text-lg">Дата окончания проекта</label>
