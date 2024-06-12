@@ -161,7 +161,7 @@ export default function TasksTable({
           <tbody>
             {tasks.data.map((task) => (
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={task.id}>
-                <th className="px-3 py-2">{task.id}</th>
+                <td className="px-3 py-2">{task.id}</td>
                 {!hideProjectColumn && (
                   <td className="px-3 py-3">{task.project.name}</td>
                 )}
