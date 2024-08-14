@@ -128,7 +128,15 @@ export default function index({ auth, users, queryParams = null, success }) {
                           onKeyPress={e => onKeyPress('name', e)}
                         />
                       </th>
-                      <th className="px-3 py-2"></th>
+                      <th className="px-3 py-2">
+                        <TextInput
+                          className="w-full text-xs"
+                          defaultValue={queryParams.name}
+                          placeholder="Фильтр по почте"
+                          onBlur={e => searchFieldChanged('name', e.target.value)}
+                          onKeyPress={e => onKeyPress('name', e)}
+                        />
+                      </th>
                       <th className="px-3 py-2"></th>
                       <th className="px-3 py-2"></th>
                     </tr>

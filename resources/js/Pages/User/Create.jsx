@@ -8,11 +8,10 @@ import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Create({ auth }) {
   const { data, setData, post, errors, reset } = useForm({
-    image: '',
     name: '',
-    status: '',
-    description: '',
-    due_date: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
   });
 
   const onSubmit = (e) => {
@@ -38,7 +37,7 @@ export default function Create({ auth }) {
             <div>
               <InputLabel
                 htmlFor="user_name"
-                value="Название пользователя" />
+                value="Имя пользователя" />
               <TextInput
                 id="user_name"
                 type="text"
@@ -51,58 +50,42 @@ export default function Create({ auth }) {
             </div>
             <div className="mt-4">
               <InputLabel
-                htmlFor="user_image_path"
-                value="Аватар проекта" />
+                htmlFor="user_email"
+                value="Почта" />
               <TextInput
-                id="user_image_path"
-                type="file"
-                name="image"
+                id="user_email"
+                type="text"
+                name="email"
+                value={data.email}
                 className="mt-1 block w-full"
-                onChange={(e) => setData('image', e.target.files[0])} />
-              <InputError message={errors.image} className="mt-2" />
-            </div>
-            <div className="mt-4">
-              <InputLabel
-                htmlFor="user_description"
-                value="Описание проекта" />
-              <TextAreaInput
-                id="user_description"
-                name="description"
-                value={data.description}
-                className="mt-1 block w-full"
-                onChange={(e) => setData('description', e.target.value)} />
+                isFocused={true}
+                onChange={(e) => setData('email', e.target.value)} />
               <InputError message={errors.description} className="mt-2" />
             </div>
             <div className="mt-4">
               <InputLabel
-                htmlFor="user_due_date"
-                value="Дата окончания проекта" />
+                htmlFor="user_password"
+                value="Пароль" />
               <TextInput
-                id="user_due_date"
-                type="date"
-                name="due_date"
-                value={data.due_date}
+                id="user_password"
+                type="password"
+                name="password"
+                value={data.password}
                 className="mt-1 block w-full"
-                onChange={(e) => setData('due_date', e.target.value)} />
-              <InputError message={errors.due_date} className="mt-2" />
+                onChange={(e) => setData('password', e.target.value)} />
+              <InputError message={errors.password} className="mt-2" />
             </div>
             <div className="mt-4">
               <InputLabel
-                htmlFor="user_status"
-                value="Статус проекта" />
-              <SelectInput
-                id="user_status"
-                name="status"
-                value={data.status}
+                htmlFor="user_password_confirm"
+                value="Проверка пароля" />
+              <TextInput
+                id="user_password_confirmation"
+                type="password"
+                name="password_confirmation"
+                value={data.password_confirmation}
                 className="mt-1 block w-full"
-                onChange={(e) => setData('status', e.target.value)}>
-                <option value="">Выбрать</option>
-                <option value="new">Новый</option>
-                <option value="pending">Отложен</option>
-                <option value="in_progress">А процессе</option>
-                <option value="completed">Завершен</option>
-                <option value="canceled">Отменен</option>
-              </SelectInput>
+                onChange={(e) => setData('password_confirmation', e.target.value)} />
               <InputError message={errors.status} className="mt-2" />
             </div>
             <div className="mt-4 flex justify-end items-center">

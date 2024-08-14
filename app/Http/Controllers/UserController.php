@@ -22,8 +22,8 @@ class UserController extends Controller
         if (request("name")) {
             $query->where("name", "like", "%" . request("name") . "%");
         }
-        if (request("status")) {
-            $query->where("status", request("status"));
+        if (request("email")) {
+            $query->where("email", "like", "%" . request("name") . "%");
         }
 
         $users = $query
