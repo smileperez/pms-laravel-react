@@ -6,6 +6,9 @@ use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class TaskController extends Controller
 {
@@ -46,7 +49,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return inertia("Task/Create");
     }
 
     /**
@@ -54,7 +57,17 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        $data = $request->validated();
+        $image = $data['image'] ?? null;
+        $data['created_by'] = Auth::id();
+        $data['updated_by'] = Auth::id();
+        if ($image) {
+            $data['image_path'] = $image->store('task/' . Str::random(), 'public');
+        }
+
+        Task::create($data);
+
+        return to_route('task.index')->with('success', 'Новый проект создан');
     }
 
     /**
@@ -62,7 +75,29 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $query = $task->tasks();
+
+        $sortField = request("sort_field", 'created_at');
+        $sortDirection = request("sort_direction", "desc");
+
+        if (request("name")) {
+            $query->where("name", "like", "%" . request("name") . "%");
+        }
+        if (request("status")) {
+            $query->where("status", request("status"));
+        }
+
+        $tasks = $query
+            ->orderBy($sortField, $sortDirection)
+            ->paginate(10)
+            ->onEachSide(1);
+
+        return inertia('Task/Show', [
+            'task' => new TaskResource($task),
+            "tasks" => TaskResource::collection($tasks),
+            'queryParams' => request()->query() ?: null,
+            'success' => session('success'),
+        ]);
     }
 
     /**
@@ -70,7 +105,9 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return inertia('Task/Edit', [
+            'task' => new TaskResource($task)
+        ]);
     }
 
     /**
@@ -78,7 +115,19 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        $data = $request->validated();
+        $image = $data['image'] ?? null;
+        $data['updated_by'] = Auth::id();
+        if ($image) {
+            if ($task->image_path) {
+                Storage::disk('public')->deleteDirectory($task->image_path);
+            }
+
+            $data['image_path'] = $image->store('task/' . Str::random(), 'public');
+        }
+        $task->update($data);
+
+        return to_route('task.index')->with('success', "Проект \"$task->name\" был успешно обновлен");
     }
 
     /**
@@ -86,6 +135,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $name = $task->name;
+        $task->delete();
+        return to_route('task.index')->with('success', "Задача \"$name\" была успешно удалена");
     }
 }
