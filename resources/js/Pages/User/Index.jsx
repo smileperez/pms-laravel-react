@@ -122,7 +122,6 @@ export default function index({ auth, users, queryParams = null, success }) {
                       <th className="px-3 py-2">
                         <TextInput
                           className="w-full text-xs"
-                          defaultValue={queryParams.name}
                           placeholder="Фильтр по имени"
                           onBlur={e => searchFieldChanged('name', e.target.value)}
                           onKeyPress={e => onKeyPress('name', e)}
@@ -131,10 +130,9 @@ export default function index({ auth, users, queryParams = null, success }) {
                       <th className="px-3 py-2">
                         <TextInput
                           className="w-full text-xs"
-                          defaultValue={queryParams.name}
                           placeholder="Фильтр по почте"
-                          onBlur={e => searchFieldChanged('name', e.target.value)}
-                          onKeyPress={e => onKeyPress('name', e)}
+                          onBlur={e => searchFieldChanged('email', e.target.value)}
+                          onKeyPress={e => onKeyPress('email', e)}
                         />
                       </th>
                       <th className="px-3 py-2"></th>

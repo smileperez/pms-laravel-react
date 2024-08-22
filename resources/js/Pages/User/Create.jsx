@@ -58,7 +58,6 @@ export default function Create({ auth }) {
                 name="email"
                 value={data.email}
                 className="mt-1 block w-full"
-                isFocused={true}
                 onChange={(e) => setData('email', e.target.value)} />
               <InputError message={errors.description} className="mt-2" />
             </div>

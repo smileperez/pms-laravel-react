@@ -23,7 +23,7 @@ class UserController extends Controller
             $query->where("name", "like", "%" . request("name") . "%");
         }
         if (request("email")) {
-            $query->where("email", "like", "%" . request("name") . "%");
+            $query->where("email", "like", "%" . request("email") . "%");
         }
 
         $users = $query
@@ -57,7 +57,7 @@ class UserController extends Controller
 
         User::create($data);
 
-        return to_route('user.index')->with('success', 'User was created');
+        return to_route('user.index')->with('success', 'Новый пользователь создан');
     }
 
     /**
