@@ -7,6 +7,11 @@ use App\Models\Task;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use Illuminate\Support\Facades\Auth;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
 
 class TaskController extends Controller
 {
@@ -56,12 +61,25 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $data = $request->validated();
+<<<<<<< HEAD
         $data['created_by'] = Auth::id();
         $data['updated_by'] = Auth::id();
 
         Task::create($data);
 
         return to_route('task.index')->with('success', 'Новая задача создана');
+=======
+        $image = $data['image'] ?? null;
+        $data['created_by'] = Auth::id();
+        $data['updated_by'] = Auth::id();
+        if ($image) {
+            $data['image_path'] = $image->store('task/' . Str::random(), 'public');
+        }
+
+        Task::create($data);
+
+        return to_route('task.index')->with('success', 'Новый проект создан');
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
     }
 
     /**
@@ -88,7 +106,11 @@ class TaskController extends Controller
 
         return inertia('Task/Show', [
             'task' => new TaskResource($task),
+<<<<<<< HEAD
             'tasks' => TaskResource::collection($tasks),
+=======
+            "tasks" => TaskResource::collection($tasks),
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
             'queryParams' => request()->query() ?: null,
             'success' => session('success'),
         ]);
@@ -110,10 +132,25 @@ class TaskController extends Controller
     public function update(UpdateTaskRequest $request, Task $task)
     {
         $data = $request->validated();
+<<<<<<< HEAD
         $data['updated_by'] = Auth::id();
         $task->update($data);
 
         return to_route('task.index')->with('success', "Задача \"$task->name\" успешно обновлена");
+=======
+        $image = $data['image'] ?? null;
+        $data['updated_by'] = Auth::id();
+        if ($image) {
+            if ($task->image_path) {
+                Storage::disk('public')->deleteDirectory($task->image_path);
+            }
+
+            $data['image_path'] = $image->store('task/' . Str::random(), 'public');
+        }
+        $task->update($data);
+
+        return to_route('task.index')->with('success', "Проект \"$task->name\" был успешно обновлен");
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
     }
 
     /**
@@ -123,8 +160,12 @@ class TaskController extends Controller
     {
         $name = $task->name;
         $task->delete();
+<<<<<<< HEAD
 
         return to_route('task.index')
             ->with('success', "Задача \"$name\" успешно удалена");
+=======
+        return to_route('task.index')->with('success', "Задача \"$name\" была успешно удалена");
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
     }
 }

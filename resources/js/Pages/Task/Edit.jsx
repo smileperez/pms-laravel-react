@@ -27,7 +27,11 @@ export default function Edit({ auth, task }) {
       user={auth.user}
       header={
         <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+<<<<<<< HEAD
           Изменение проекта "{task.name}"
+=======
+          Изменение задачи "{task.name}"
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
         </h2>
       }
     >
@@ -43,7 +47,11 @@ export default function Edit({ auth, task }) {
             <div>
               <InputLabel
                 htmlFor="task_name"
+<<<<<<< HEAD
                 value="Название проекта" />
+=======
+                value="Название задачи" />
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
               <TextInput
                 id="task_name"
                 type="text"
@@ -57,7 +65,11 @@ export default function Edit({ auth, task }) {
             <div className="mt-4">
               <InputLabel
                 htmlFor="task_image_path"
+<<<<<<< HEAD
                 value="Аватар проекта" />
+=======
+                value="Аватар задачиа" />
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
               <TextInput
                 id="task_image_path"
                 type="file"
@@ -69,7 +81,11 @@ export default function Edit({ auth, task }) {
             <div className="mt-4">
               <InputLabel
                 htmlFor="task_description"
+<<<<<<< HEAD
                 value="Описание проекта" />
+=======
+                value="Описание задачиа" />
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
               <TextAreaInput
                 id="task_description"
                 name="description"
@@ -81,7 +97,11 @@ export default function Edit({ auth, task }) {
             <div className="mt-4">
               <InputLabel
                 htmlFor="task_due_date"
+<<<<<<< HEAD
                 value="Дата окончания проекта" />
+=======
+                value="Дата окончания задачиа" />
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
               <TextInput
                 id="task_due_date"
                 type="date"
@@ -94,7 +114,11 @@ export default function Edit({ auth, task }) {
             <div className="mt-4">
               <InputLabel
                 htmlFor="task_status"
+<<<<<<< HEAD
                 value="Статус проекта" />
+=======
+                value="Статус задачиа" />
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
               <SelectInput
                 id="task_status"
                 name="status"

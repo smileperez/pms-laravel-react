@@ -13,14 +13,19 @@ export default function index({ auth, tasks, queryParams = null }) {
           </h2>
           <Link
             href={route("task.create")}
+<<<<<<< HEAD
             className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
           >
+=======
+            className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
+>>>>>>> 05e01ffb2b866496a1e8596caf206d1cf2d4c8af
             Добавить новую задачу
           </Link>
         </div>
       }
     >
       <Head title="Все задачи" />
+
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
