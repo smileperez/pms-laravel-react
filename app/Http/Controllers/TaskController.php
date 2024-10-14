@@ -6,6 +6,7 @@ use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -46,7 +47,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return inertia("Task/Create");
     }
 
     /**
@@ -54,7 +55,13 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['created_by'] = Auth::id();
+        $data['updated_by'] = Auth::id();
+
+        Task::create($data);
+
+        return to_route('task.index')->with('success', 'Новая задача создана');
     }
 
     /**
@@ -62,7 +69,29 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $query = $task->tasks();
+
+        $sortField = request("sort_field", 'created_at');
+        $sortDirection = request("sort_direction", "desc");
+
+        if (request("name")) {
+            $query->where("name", "like", "%" . request("name") . "%");
+        }
+        if (request("status")) {
+            $query->where("status", request("status"));
+        }
+
+        $tasks = $query
+            ->orderBy($sortField, $sortDirection)
+            ->paginate(10)
+            ->onEachSide(1);
+
+        return inertia('Task/Show', [
+            'task' => new TaskResource($task),
+            'tasks' => TaskResource::collection($tasks),
+            'queryParams' => request()->query() ?: null,
+            'success' => session('success'),
+        ]);
     }
 
     /**
@@ -70,7 +99,9 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return inertia('Task/Edit', [
+            'task' => new TaskResource($task)
+        ]);
     }
 
     /**
@@ -78,7 +109,11 @@ class TaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        $data = $request->validated();
+        $data['updated_by'] = Auth::id();
+        $task->update($data);
+
+        return to_route('task.index')->with('success', "Задача \"$task->name\" успешно обновлена");
     }
 
     /**
@@ -86,6 +121,10 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $name = $task->name;
+        $task->delete();
+
+        return to_route('task.index')
+            ->with('success', "Задача \"$name\" успешно удалена");
     }
 }
