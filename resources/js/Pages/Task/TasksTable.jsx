@@ -12,8 +12,10 @@ import { Link, router } from "@inertiajs/react";
 
 export default function TasksTable({
   tasks,
+  success,
   queryParams = null,
-  hideProjectColumn = false
+  hideProjectColumn = false,
+  users
 }) {
 
   queryParams = queryParams || {};
@@ -48,8 +50,20 @@ export default function TasksTable({
     router.get(route('task.index', queryParams));
   }
 
+  const deleteTask = (task) => {
+    if (!window.confirm(`Подтвердите удаление проекта "${task.name}"`)) {
+      return;
+    }
+    router.delete(route('task.destroy', task.id))
+  }
+
   return (
     <>
+      {success && (
+        <div className="bg-emerald-500 py-2 px-4 text-white rounded mb-4">
+          {success}
+        </div>
+      )}
       <div className="overflow-auto">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-gray-500">
@@ -88,6 +102,14 @@ export default function TasksTable({
                 sortChanged={sortChanged}
               >
                 Приоритет
+              </TableHeading>
+              <TableHeading
+                name={"assigned_user_id"}
+                sort_field={queryParams.sort_field}
+                sort_direction={queryParams.sort_direction}
+                sortChanged={sortChanged}
+              >
+                Назначена
               </TableHeading>
               <TableHeading
                 name={"created_at"}
@@ -156,6 +178,7 @@ export default function TasksTable({
               <th className="px-3 py-2"></th>
               <th className="px-3 py-2"></th>
               <th className="px-3 py-2"></th>
+              <th className="px-3 py-2"></th>
             </tr>
           </thead>
           <tbody>
@@ -165,7 +188,11 @@ export default function TasksTable({
                 {!hideProjectColumn && (
                   <td className="px-3 py-3">{task.project.name}</td>
                 )}
-                <td className="px-3 py-3">{task.name}</td>
+                <td className="px-3 py-3 hover:text-white">
+                  <Link href={route("task.show", task.id)}>
+                    {task.name}
+                  </Link>
+                </td>
                 <td className="px-3 py-3">
                   <span className={"px-2 py-1 rounded text-white " + TASK_STATUS_CLASS_MAP[task.status]}>
                     {TASK_STATUS_TEXT_MAP[task.status]}
@@ -176,6 +203,7 @@ export default function TasksTable({
                     {TASK_PRIORITY_TEXT_MAP[task.priority]}
                   </span>
                 </td>
+                <td className="px-3 py-3 text-nowrap">{ }</td>
                 <td className="px-3 py-3 text-nowrap">{task.created_at}</td>
                 <td className="px-3 py-3 text-nowrap">{task.due_date}</td>
                 <td className="px-3 py-3">{task.createdBy.name}</td>
@@ -184,9 +212,12 @@ export default function TasksTable({
                   <Link href={route('task.edit', task.id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1">
                     Изменить
                   </Link>
-                  <Link href={route('task.destroy', task.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1">
+                  <button
+                    onClick={event => deleteTask(task)}
+                    className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1"
+                  >
                     Удалить
-                  </Link>
+                  </button>
                 </td>
               </tr>
             ))}

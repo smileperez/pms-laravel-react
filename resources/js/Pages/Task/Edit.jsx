@@ -6,13 +6,15 @@ import TextInput from "@/Components/TextInput";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 
-export default function Edit({ auth, task }) {
+export default function Edit({ auth, task, projects, users }) {
   const { data, setData, post, errors, reset } = useForm({
-    image: '',
     name: task.name || "",
-    status: task.status || "",
     description: task.description || "",
+    status: task.status || "",
+    priority: task.priority || "",
     due_date: task.due_date || "",
+    assigned_user_id: task.assigned_user_id || "",
+    project_id: task.project_id || "",
     _method: 'PUT'
   });
 
@@ -27,23 +29,19 @@ export default function Edit({ auth, task }) {
       user={auth.user}
       header={
         <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-          Изменение проекта "{task.name}"
+          Изменение задачи "{task.name}"
         </h2>
       }
     >
       <Head title="Проекты" />
 
       <div className="py-12">
-        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto sm:px-6 lg:px-8">
           <form onSubmit={onSubmit} className="p-4 sm:p8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-            {task.image_path &&
-              <div>
-                <img src={task.image_path} className="w-64" />
-              </div>}
             <div>
               <InputLabel
                 htmlFor="task_name"
-                value="Название проекта" />
+                value="Название" />
               <TextInput
                 id="task_name"
                 type="text"
@@ -56,20 +54,8 @@ export default function Edit({ auth, task }) {
             </div>
             <div className="mt-4">
               <InputLabel
-                htmlFor="task_image_path"
-                value="Аватар проекта" />
-              <TextInput
-                id="task_image_path"
-                type="file"
-                name="image"
-                className="mt-1 block w-full"
-                onChange={(e) => setData('image', e.target.files[0])} />
-              <InputError message={errors.image} className="mt-2" />
-            </div>
-            <div className="mt-4">
-              <InputLabel
                 htmlFor="task_description"
-                value="Описание проекта" />
+                value="Описание" />
               <TextAreaInput
                 id="task_description"
                 name="description"
@@ -92,23 +78,70 @@ export default function Edit({ auth, task }) {
               <InputError message={errors.due_date} className="mt-2" />
             </div>
             <div className="mt-4">
-              <InputLabel
-                htmlFor="task_status"
-                value="Статус проекта" />
+              <InputLabel htmlFor="task_status" value="Статус" />
               <SelectInput
                 id="task_status"
                 name="status"
                 value={data.status}
                 className="mt-1 block w-full"
-                onChange={(e) => setData('status', e.target.value)}>
+                onChange={(e) => setData("status", e.target.value)}
+              >
                 <option value="">Выбрать</option>
-                <option value="new">Новый</option>
-                <option value="pending">Отложен</option>
-                <option value="in_progress">А процессе</option>
-                <option value="completed">Завершен</option>
+                <option value="new">Новая</option>
+                <option value="pending">Отложена</option>
+                <option value="in_progress">В процессе</option>
+                <option value="completed">Завершена</option>
                 <option value="canceled">Отменен</option>
               </SelectInput>
               <InputError message={errors.status} className="mt-2" />
+            </div>
+            <div className="mt-4">
+              <InputLabel htmlFor="task_priority" value="Приоритет" />
+              <SelectInput
+                id="task_priority"
+                name="priority"
+                value={data.priority}
+                className="mt-1 block w-full"
+                onChange={(e) => setData("priority", e.target.value)}
+              >
+                <option value="">Выбрать</option>
+                <option value="low">Низкий</option>
+                <option value="medium">Средний</option>
+                <option value="high">Высокий</option>
+              </SelectInput>
+              <InputError message={errors.priority} className="mt-2" />
+            </div>
+            <div className="mt-4">
+              <InputLabel htmlFor="assigned_user_id" value="Назначено на" />
+              <SelectInput
+                id="assigned_user_id"
+                name="assigned_user_id"
+                value={data.assigned_user_id}
+                className="mt-1 block w-full"
+                onChange={(e) => setData("assigned_user_id", e.target.value)}
+              >
+                <option value="">Выбрать</option>
+                {users.data.map(user => (
+                  <option value={user.id}>{user.name}</option>
+                ))}
+              </SelectInput>
+              <InputError message={errors.assigned_user_id} className="mt-2" />
+            </div>
+            <div className="mt-4">
+              <InputLabel htmlFor="project_id" value="Привязка к проекту" />
+              <SelectInput
+                id="project_id"
+                name="project_id"
+                value={data.project_id}
+                className="mt-1 block w-full"
+                onChange={(e) => setData("project_id", e.target.value)}
+              >
+                <option value="">Выбрать</option>
+                {projects.data.map(project => (
+                  <option value={project.id}>{project.name}</option>
+                ))}
+              </SelectInput>
+              <InputError message={errors.project_id} className="mt-2" />
             </div>
             <div className="mt-4 flex justify-end items-center">
               <Link
