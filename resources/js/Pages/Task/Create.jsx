@@ -39,7 +39,7 @@ export default function Create({ auth }) {
             className="p-4 sm:p8 bg-white dark:bg-gray-800 shadow sm:rounded-lg"
           >
             <div>
-              <InputLabel htmlFor="task_name" value="Название задачи" />
+              <InputLabel htmlFor="task_name" value="Название" />
               <TextInput
                 id="task_name"
                 type="text"
@@ -52,7 +52,7 @@ export default function Create({ auth }) {
               <InputError message={errors.name} className="mt-2" />
             </div>
             <div className="mt-4">
-              <InputLabel htmlFor="task_description" value="Описание задачи" />
+              <InputLabel htmlFor="task_description" value="Описание" />
               <TextAreaInput
                 id="task_description"
                 name="description"
@@ -65,7 +65,7 @@ export default function Create({ auth }) {
             <div className="mt-4">
               <InputLabel
                 htmlFor="task_due_date"
-                value="Дата окончания задачи"
+                value="Дата окончания"
               />
               <TextInput
                 id="task_due_date"
@@ -78,7 +78,7 @@ export default function Create({ auth }) {
               <InputError message={errors.due_date} className="mt-2" />
             </div>
             <div className="mt-4">
-              <InputLabel htmlFor="task_status" value="Статус задачи" />
+              <InputLabel htmlFor="task_status" value="Статус" />
               <SelectInput
                 id="task_status"
                 name="status"
@@ -87,11 +87,27 @@ export default function Create({ auth }) {
                 onChange={(e) => setData("status", e.target.value)}
               >
                 <option value="">Выбрать</option>
-                <option value="new">Новый</option>
-                <option value="pending">Отложен</option>
-                <option value="in_progress">А процессе</option>
-                <option value="completed">Завершен</option>
+                <option value="new">Новая</option>
+                <option value="pending">Отложена</option>
+                <option value="in_progress">В процессе</option>
+                <option value="completed">Завершена</option>
                 <option value="canceled">Отменен</option>
+              </SelectInput>
+              <InputError message={errors.status} className="mt-2" />
+            </div>
+            <div className="mt-4">
+              <InputLabel htmlFor="task_priority" value="Приоритет" />
+              <SelectInput
+                id="task_priority"
+                name="priority"
+                value={data.priority}
+                className="mt-1 block w-full"
+                onChange={(e) => setData("priority", e.target.value)}
+              >
+                <option value="">Выбрать</option>
+                <option value="low">Низкий</option>
+                <option value="medium">Средний</option>
+                <option value="high">Высокий</option>
               </SelectInput>
               <InputError message={errors.status} className="mt-2" />
             </div>

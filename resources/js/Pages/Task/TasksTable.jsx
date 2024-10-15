@@ -182,10 +182,10 @@ export default function TasksTable({
                 <td className="px-3 py-3">{task.updatedBy.name}</td>
                 <td className="px-3 py-3">
                   <Link href={route('task.edit', task.id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1">
-                    Edit
+                    Изменить
                   </Link>
                   <Link href={route('task.destroy', task.id)} className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1">
-                    Delete
+                    Удалить
                   </Link>
                 </td>
               </tr>
