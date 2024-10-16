@@ -1,66 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Веб-приложение «Project Management System»
+
+<p align="center"><img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/logo.png" width="100%" alt="Laravel Logo"></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<img src="https://badgen.net/badge/PHP/8.3.6?color=purple" alt="PHP Version">
+<img src="https://badgen.net/badge/Laravel/11.5.0?color=red" alt="Laravel Version">
+<img src="https://badgen.net/badge/Node.js/8.3.6?color=green" alt="NODE Version">
+<img src="https://badgen.net/badge/NPM/10.1.0?color=orange" alt="NPM Version">
+<img src="https://badgen.net/badge/React/18.2?color=cyan" alt="React Version">
+<img src="https://badgen.net/badge/App%20Version/1.0?color=grey" alt="App Version">
 </p>
 
-## About Laravel
+## О проекте
+Проект представляет собой сайт для онлайн бронирования билетов в кинотеатр и административный интерфейс системы для конфигурирования залов, сеансов и предварительного бронирования билетов.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Превью проекта
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+*Клиентская часть*
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/main_page.png" alt="Main page">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/select_seats_page.png" alt="Select seats page">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/reserve_page.png" alt="Reserve page">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/ticket_page.png" alt="Ticket page">
 
-## Learning Laravel
+*Административная часть*
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/dashboard_page_2.png" alt="Dashboard page 2">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/dashboard_page_1.png" alt="Dashboard page 1">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/halls_page_1.png" alt="Halls page 1">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/halls_page_2.png" alt="Halls page 2">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/config_page.png" alt="Config page">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/prices_page_1.png" alt="Prices page 1">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/prices_page_2.png" alt="Prices page 2">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/movies_page_1.png" alt="Ticket page 1">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/movies_page_2.png" alt="Ticket page 2">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/sessions_page_1.png" alt="Ticket page 1">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/sessions_page_2.png" alt="Ticket page 2">
+<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/users_page.png" alt="Users page">
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Ключевые заметки по работе приложения
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-  Приложение реализовано по архитектуре SPA на **Laravel Framework**
+-  Использование **Inertia** с использованием **React**
+-  Использование пакета стилей **`Tailwind.css`** и плагина **`@tailwindcss/forms`**
+-  Использование пакет иконок **`Heroicons`**
+-  Использование пакета стилей **`Headless UI`**
 
-## Laravel Sponsors
+## Документация
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+*Запуск приложения Laravel:*
+| **№** | **Действие** | **Подробности** |
+|:- |:----------------|:--------------|
+| 1.1 | В корневой папке проекта запускаем команду | `composer install` |
+| 1.2 | В корневой папке проекта переименовываем имя конфиг-файла `.env.example` на имя `.env` | Проверяем файл в корневой папке проекта `.env` на корректность, например что адрес, название БД, логин и пароль стоят корректные |
+| 1.4 | Создаем новую БД с кодировкой `utf8mb4_unicode_ci` | Проверяем, что название новой БД сходится с названием в файле `.env` |
+| 1.5 | Выполняем первую миграцию с сидированием БД | `php artisan migrate:fresh --seed` |
+| 1.6 | В корневой папке приложения запускаем команду | `php artisan key:generate` |
+| 1.6 | В корневой папке приложения запускаем команду | `php artisan storage:link` |
+| 1.7 | Проверяем, что Laravel запустился корректно | `php artisan serve` |
 
-### Premium Partners
+## Используемые NPM пакеты
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-  @headlessui/react@1.7.19</br>
+-  @heroicons/react@2.1.3</br>
+-  @inertiajs/react@1.0.16</br>
+-  @tailwindcss/forms@0.5.7</br>
+-  @vitejs/plugin-react@4.2.1</br>
+-  autoprefixer@10.4.19</br>
+-  laravel-vite-plugin@1.0.2</br>
+-  postcss@8.4.47</br>
+-  react-dom@18.3.1</br>
+-  react@18.3.1</br>
+-  tailwindcss@3.4.3</br>
+-  vite@5.4.9</br>
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
