@@ -32,7 +32,7 @@ export default function Create({ auth }) {
     >
       <Head title="Проекты" />
 
-      <div className="py-12">
+      <div className="py-8">
         <div className="max-w-[1400px] mx-auto sm:px-6 lg:px-8">
           <form
             onSubmit={onSubmit}

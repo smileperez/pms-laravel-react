@@ -14,7 +14,7 @@ export default function Show({ auth, task, users }) {
       header={
         <div className="flex justify-between items-center">
           <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {`Проект "${task.name}"`}
+            {`Задача "${task.name}"`}
           </h2>
           <Link
             href={route("task.edit", task.id)}
@@ -26,7 +26,7 @@ export default function Show({ auth, task, users }) {
       }
     >
       <Head title={`Задача "${task.name}"`} />
-      <div className="py-12">
+      <div className="py-8">
         <div className="max-w-[1400px] mx-auto sm:px-6 lg:px-8">
           <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 text-gray-900 dark:text-gray-100">

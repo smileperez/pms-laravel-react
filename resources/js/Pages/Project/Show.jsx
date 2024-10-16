@@ -22,16 +22,9 @@ export default function Show({ auth, success, project, tasks, queryParams }) {
       }
     >
       <Head title={`Проект "${project.name}"`} />
-      <div className="py-12">
+      <div className="py-8">
         <div className="max-w-[1400px] mx-auto sm:px-6 lg:px-8">
           <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            <div>
-              <img
-                src={project.image_path}
-                alt=""
-                className="w-full h-64 object-cover"
-              />
-            </div>
             <div className="p-6 text-gray-900 dark:text-gray-100">
               <div className="grid gap-1 grid-cols-2 mt-2">
                 <div>

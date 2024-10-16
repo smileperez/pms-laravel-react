@@ -33,7 +33,7 @@ export default function Edit({ auth, project }) {
     >
       <Head title="Проекты" />
 
-      <div className="py-12">
+      <div className="py-8">
         <div className="max-w-[1400px] mx-auto sm:px-6 lg:px-8">
           <form onSubmit={onSubmit} className="p-4 sm:p8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
             {project.image_path &&
