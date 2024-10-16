@@ -14,10 +14,12 @@
 
 ## Превью проекта
 
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/main_page.png" alt="Main page">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/select_seats_page.png" alt="Select seats page">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/reserve_page.png" alt="Reserve page">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/ticket_page.png" alt="Ticket page">
+<img src="https://raw.githubusercontent.com/smileperez/pms-laravel-react/refs/heads/master/public/githubimg/Screenshot%202024-10-16%20215738.png" alt="Main Page">
+<img src="https://raw.githubusercontent.com/smileperez/pms-laravel-react/refs/heads/master/public/githubimg/Screenshot%202024-10-16%20215757.png" alt="Projects Page">
+<img src="https://raw.githubusercontent.com/smileperez/pms-laravel-react/refs/heads/master/public/githubimg/Screenshot%202024-10-16%20215832.png" alt="Specific project Page">
+<img src="https://raw.githubusercontent.com/smileperez/pms-laravel-react/refs/heads/master/public/githubimg/Screenshot%202024-10-16%20215844.png" alt="Tasks Page">
+<img src="https://raw.githubusercontent.com/smileperez/pms-laravel-react/refs/heads/master/public/githubimg/Screenshot%202024-10-16%20215854.png" alt="MyTasks Page">
+<img src="https://raw.githubusercontent.com/smileperez/pms-laravel-react/refs/heads/master/public/githubimg/Screenshot%202024-10-16%20215905.png" alt="Users Page">
 
 ## Ключевые заметки по работе приложения
 
