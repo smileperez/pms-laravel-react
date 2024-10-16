@@ -1,7 +1,5 @@
 # Веб-приложение «Project Management System»
 
-<p align="center"><img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/logo.png" width="100%" alt="Laravel Logo"></p>
-
 <p align="center">
 <img src="https://badgen.net/badge/PHP/8.3.6?color=purple" alt="PHP Version">
 <img src="https://badgen.net/badge/Laravel/11.5.0?color=red" alt="Laravel Version">
@@ -12,31 +10,14 @@
 </p>
 
 ## О проекте
-Проект представляет собой сайт для онлайн бронирования билетов в кинотеатр и административный интерфейс системы для конфигурирования залов, сеансов и предварительного бронирования билетов.
+Проект представляет собой сайт для управления проектами и учета прогресса выполнения задач в команде.
 
 ## Превью проекта
-
-*Клиентская часть*
 
 <img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/main_page.png" alt="Main page">
 <img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/select_seats_page.png" alt="Select seats page">
 <img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/reserve_page.png" alt="Reserve page">
 <img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/ticket_page.png" alt="Ticket page">
-
-*Административная часть*
-
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/dashboard_page_2.png" alt="Dashboard page 2">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/dashboard_page_1.png" alt="Dashboard page 1">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/halls_page_1.png" alt="Halls page 1">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/halls_page_2.png" alt="Halls page 2">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/config_page.png" alt="Config page">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/prices_page_1.png" alt="Prices page 1">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/prices_page_2.png" alt="Prices page 2">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/movies_page_1.png" alt="Ticket page 1">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/movies_page_2.png" alt="Ticket page 2">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/sessions_page_1.png" alt="Ticket page 1">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/sessions_page_2.png" alt="Ticket page 2">
-<img src="https://raw.githubusercontent.com/smileperez/fs-diplom-laravel-react/main/public/images/users_page.png" alt="Users page">
 
 ## Ключевые заметки по работе приложения
 
