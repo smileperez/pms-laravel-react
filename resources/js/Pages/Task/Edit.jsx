@@ -67,7 +67,7 @@ export default function Edit({ auth, task, projects, users }) {
             <div className="mt-4">
               <InputLabel
                 htmlFor="task_due_date"
-                value="Дата окончания проекта" />
+                value="Срок задачи" />
               <TextInput
                 id="task_due_date"
                 type="date"

@@ -1,5 +1,10 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { TASK_STATUS_CLASS_MAP, TASK_PRIORITY_CLASS_MAP, TASK_STATUS_TEXT_MAP, TASK_PRIORITY_TEXT_MAP } from "@/constants";
+import {
+  TASK_STATUS_CLASS_MAP,
+  TASK_PRIORITY_CLASS_MAP,
+  TASK_STATUS_TEXT_MAP,
+  TASK_PRIORITY_TEXT_MAP,
+} from "@/constants";
 import { Head, Link } from "@inertiajs/react";
 
 export default function Show({ auth, task, users }) {
@@ -7,9 +12,17 @@ export default function Show({ auth, task, users }) {
     <AuthenticatedLayout
       user={auth.user}
       header={
-        <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-          {`Проект "${task.name}"`}
-        </h2>
+        <div className="flex justify-between items-center">
+          <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {`Проект "${task.name}"`}
+          </h2>
+          <Link
+            href={route("task.edit", task.id)}
+            className="bg-amber-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-amber-600"
+          >
+            Изменить
+          </Link>
+        </div>
       }
     >
       <Head title={`Задача "${task.name}"`} />
@@ -30,7 +43,7 @@ export default function Show({ auth, task, users }) {
                   <div className="mt-4">
                     <label className="font-bold text-lg">Проект</label>
                     <p className="mt-1">
-                      <Link href={route('project.show', task.project.id)}>
+                      <Link href={route("project.show", task.project.id)}>
                         {task.project.name}
                       </Link>
                     </p>
@@ -40,7 +53,9 @@ export default function Show({ auth, task, users }) {
                     <p className="mt-1">{task.updatedBy.name}</p>
                   </div>
                   <div className="mt-4">
-                    <label className="font-bold text-lg">Последнее обновление от</label>
+                    <label className="font-bold text-lg">
+                      Последнее обновление от
+                    </label>
                     <p className="mt-1">{task.updatedBy.name}</p>
                   </div>
                 </div>
@@ -54,7 +69,12 @@ export default function Show({ auth, task, users }) {
                   <div className="mt-4">
                     <label className="font-bold text-lg">Статус</label>
                     <p className="mt-1">
-                      <span className={"px-2 py-1 rounded text-white " + TASK_STATUS_CLASS_MAP[task.status]}>
+                      <span
+                        className={
+                          "px-2 py-1 rounded text-white " +
+                          TASK_STATUS_CLASS_MAP[task.status]
+                        }
+                      >
                         {TASK_STATUS_TEXT_MAP[task.status]}
                       </span>
                     </p>
@@ -62,7 +82,12 @@ export default function Show({ auth, task, users }) {
                   <div className="mt-4">
                     <label className="font-bold text-lg">Приоритет</label>
                     <p className="mt-1">
-                      <span className={"px-2 py-1 rounded text-white " + TASK_PRIORITY_CLASS_MAP[task.priority]}>
+                      <span
+                        className={
+                          "px-2 py-1 rounded text-white " +
+                          TASK_PRIORITY_CLASS_MAP[task.priority]
+                        }
+                      >
                         {TASK_PRIORITY_TEXT_MAP[task.priority]}
                       </span>
                     </p>
@@ -72,7 +97,7 @@ export default function Show({ auth, task, users }) {
                     <p className="mt-1">{task.created_at}</p>
                   </div>
                   <div className="mt-4">
-                    <label className="font-bold text-lg">Дата окончания</label>
+                    <label className="font-bold text-lg">Срок</label>
                     <p className="mt-1">{task.due_date}</p>
                   </div>
                 </div>
@@ -86,5 +111,5 @@ export default function Show({ auth, task, users }) {
         </div>
       </div>
     </AuthenticatedLayout>
-  )
+  );
 }

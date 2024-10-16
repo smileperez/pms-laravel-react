@@ -21,7 +21,7 @@ export const TASK_STATUS_CLASS_MAP = {
 };
 export const TASK_STATUS_TEXT_MAP = {
   new: "новая",
-  pending: "отложена",
+  pending: "в ожидании",
   in_progress: "в процессе",
   completed: "завершена",
   canceled: "отменена",

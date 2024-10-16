@@ -122,4 +122,37 @@ class TaskController extends Controller
         return to_route('task.index')
             ->with('success', "Задача \"$name\" успешно удалена");
     }
+
+    /**
+     * Показывает все задачи, назначенные на текущего залогиненного пользователя.
+     */
+    public function myTasks()
+    {
+        $user = auth()->user();
+        $query = Task::query()->where("assigned_user_id", $user->id);
+
+        $sortField = request("sort_field", 'created_at');
+        $sortDirection = request("sort_direction", "desc");
+
+        if (request("name")) {
+            $query->where("name", "like", "%" . request("name") . "%");
+        }
+        if (request("status")) {
+            $query->where("status", request("status"));
+        }
+        if (request("priority")) {
+            $query->where("priority", request("priority"));
+        }
+
+        $tasks = $query
+            ->orderBy($sortField, $sortDirection)
+            ->paginate(10)
+            ->onEachSide(1);
+
+        return inertia("Task/Index", [
+            "tasks" => TaskResource::collection($tasks),
+            'queryParams' => request()->query() ?: null,
+            'success' => session('success'),
+        ]);
+    }
 }

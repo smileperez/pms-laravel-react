@@ -58,7 +58,7 @@ export default function index({ auth, projects, queryParams = null, success }) {
           <Link
             href={route("project.create")}
             className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
-            Добавить новый проект
+            Добавить проект
           </Link>
         </div>
       }
