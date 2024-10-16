@@ -28,7 +28,7 @@ class DashboardController extends Controller
         $totalCompletedTasks = Task::query()->where('status', 'completed')->count();
         $myCompletedTasks = Task::query()->where('status', 'completed')->where('assigned_user_id', $user->id)->count();
 
-        $activeTasks = Task::query()->whereIn('status', ['pending', 'in_progress'])->where('assigned_user_id', $user->id)->orderByDesc('id')->take(10)->get();
+        $activeTasks = Task::query()->whereIn('status', ['new', 'pending', 'in_progress'])->where('assigned_user_id', $user->id)->orderByDesc('id')->take(10)->get();
         $activeTasks = TaskResource::collection($activeTasks);
         
         return Inertia::render('Dashboard', compact('totalNewTasks', 'myNewTasks', 'totalPendingTasks', 'myPendingTasks', 'totalProgressTasks', 'myProgressTasks', 'totalCompletedTasks', 'myCompletedTasks', 'activeTasks'));

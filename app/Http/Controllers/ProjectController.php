@@ -62,7 +62,6 @@ class ProjectController extends Controller
         if ($image) {
             $data['image_path'] = $image->store('project/' . Str::random(), 'public');
         }
-
         Project::create($data);
 
         return to_route('project.index')->with('success', 'Новый проект создан');
@@ -118,14 +117,13 @@ class ProjectController extends Controller
         $data['updated_by'] = Auth::id();
         if ($image) {
             if ($project->image_path) {
-                Storage::disk('public')->deleteDirectory($project->image_path);
+                Storage::disk('public')->deleteDirectory(dirname($project->image_path));
             }
-
             $data['image_path'] = $image->store('project/' . Str::random(), 'public');
         }
         $project->update($data);
 
-        return to_route('project.index')->with('success',"Проект \"$project->name\" был успешно обновлен");
+        return to_route('project.index')->with('success', "Проект \"$project->name\" был успешно обновлен");
     }
 
     /**

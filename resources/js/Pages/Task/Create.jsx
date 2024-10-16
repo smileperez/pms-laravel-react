@@ -88,12 +88,12 @@ export default function Create({ auth, projects, users }) {
                 className="mt-1 block w-full"
                 onChange={(e) => setData("status", e.target.value)}
               >
-                <option value="">Выбрать</option>
-                <option value="new">Новая</option>
-                <option value="pending">Отложена</option>
-                <option value="in_progress">В процессе</option>
-                <option value="completed">Завершена</option>
-                <option value="canceled">Отменен</option>
+                <option value="">выбрать</option>
+                <option value="new">новая</option>
+                <option value="pending">в ожидании</option>
+                <option value="in_progress">в процессе</option>
+                <option value="completed">завершена</option>
+                <option value="canceled">отменен</option>
               </SelectInput>
               <InputError message={errors.status} className="mt-2" />
             </div>
@@ -106,10 +106,10 @@ export default function Create({ auth, projects, users }) {
                 className="mt-1 block w-full"
                 onChange={(e) => setData("priority", e.target.value)}
               >
-                <option value="">Выбрать</option>
-                <option value="low">Низкий</option>
-                <option value="medium">Средний</option>
-                <option value="high">Высокий</option>
+                <option value="">выбрать</option>
+                <option value="low">низкий</option>
+                <option value="medium">средний</option>
+                <option value="high">высокий</option>
               </SelectInput>
               <InputError message={errors.priority} className="mt-2" />
             </div>

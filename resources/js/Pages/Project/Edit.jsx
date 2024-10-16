@@ -101,12 +101,12 @@ export default function Edit({ auth, project }) {
                 value={data.status}
                 className="mt-1 block w-full"
                 onChange={(e) => setData('status', e.target.value)}>
-                <option value="">Выбрать</option>
-                <option value="new">Новый</option>
-                <option value="pending">Отложен</option>
-                <option value="in_progress">А процессе</option>
-                <option value="completed">Завершен</option>
-                <option value="canceled">Отменен</option>
+                <option value="">выбрать</option>
+                <option value="new">новый</option>
+                <option value="pending">отложен</option>
+                <option value="in_progress">в процессе</option>
+                <option value="completed">завершен</option>
+                <option value="canceled">отменен</option>
               </SelectInput>
               <InputError message={errors.status} className="mt-2" />
             </div>
